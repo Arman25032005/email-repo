@@ -1,0 +1,19 @@
+name: My GitHub Action
+
+on:
+  push:
+    branches:
+      - main  # Runs on push to main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: 24f2002097@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
+
+      - name: Finish
+        run: echo "GitHub Actions setup complete!"
