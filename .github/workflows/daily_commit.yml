@@ -1,0 +1,25 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:  # Allows manual trigger if needed
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Update Status File (24f2002097@ds.study.iitm.ac.in)
+        run: |
+          echo "Last run: $(date)" > status.txt
+          
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "24f2002097@ds.study.iitm.ac.in"
+          git add status.txt
+          git commit -m "Automated daily update"
+          git push
